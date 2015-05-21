@@ -24,7 +24,7 @@ class UDPClient {
             clientSocket.send(new DatagramPacket(sendData, sendData.length, InetAddress.getByName(args[0]), Integer.parseInt(args[1])));
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             clientSocket.receive(receivePacket);
-            System.out.println("FROM SERVER: " + new String(receivePacket.getData()));
+            System.out.println("From server: " + new String(receivePacket.getData()));
             clientSocket.close();
         }
     }
