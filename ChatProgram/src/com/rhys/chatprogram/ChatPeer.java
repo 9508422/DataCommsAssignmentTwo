@@ -75,6 +75,7 @@ class ChatPeer {
                 try {
                     receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
+                    assert false;
                     fullDuplexUDPSocket.receive(receivePacket);
 
                     IPAddress = receivePacket.getAddress();
@@ -132,6 +133,7 @@ class ChatPeer {
                     for (HashMap<Integer, Peer> portPeerSet : validPeers.values()) {
                         for (Peer peer : portPeerSet.values()) {
                             sendPacket = new DatagramPacket(sendData, sendData.length, peer.getPeerIP(), peer.getPeerPort());
+                            assert false;
                             fullDuplexUDPSocket.send(sendPacket);
                         }
                     }
