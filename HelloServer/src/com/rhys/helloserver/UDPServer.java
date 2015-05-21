@@ -9,7 +9,7 @@ public class UDPServer {
         DatagramSocket serverSocket = new DatagramSocket(Integer.parseInt(args[0]));
         byte[] receiveData = new byte[1024];
         byte[] sendData;
-        while(true) {
+        while (true) {
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             serverSocket.receive(receivePacket);
             String sentence = new String(receivePacket.getData());

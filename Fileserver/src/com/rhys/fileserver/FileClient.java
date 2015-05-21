@@ -10,7 +10,7 @@ import java.net.UnknownHostException;
  */
 public class FileClient {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         InetAddress serverIP = null;
         int serverPort = 0;
 
@@ -72,7 +72,7 @@ public class FileClient {
             while (read != -1) {
                 toDisk.write(buffer, 0, read);
                 totalBytesReceived += read;
-                read = fromServer.read(buffer, 0 ,1024);
+                read = fromServer.read(buffer, 0, 1024);
             }
 
             System.out.println("Client status: " + socket + " -> " + fileString + " written to disk. Total Bytes received: " + totalBytesReceived);

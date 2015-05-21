@@ -11,7 +11,7 @@ public class FileServer {
         int inputPort = 8888;
         ServerSocket serverSocket = null;
 
-        if(args.length > 0) {
+        if (args.length > 0) {
             try {
                 inputPort = Integer.parseInt(args[0]);
                 if (inputPort > 65535 || inputPort < 0) {
