@@ -13,8 +13,9 @@ class FileClient {
     public static void main(String[] args) {
         InetAddress serverIP = null;
         int serverPort = 0;
+        String fileString = "";
 
-        if (args.length == 3) {
+        /*if (args.length == 3) {
             try {
                 serverIP = InetAddress.getByName(args[0]);
             } catch (UnknownHostException e) {
@@ -24,11 +25,6 @@ class FileClient {
 
             try {
                 serverPort = Integer.parseInt(args[1]);
-
-                if (serverPort > 65535 || serverPort < 0) {
-                    System.err.println("The port '" + serverPort + "' is out of range (0 - 65535");
-                    System.exit(1);
-                }
             } catch (NumberFormatException e) {
                 System.err.println("The argument '" + args[1] + "' must be an integer.");
                 System.exit(1);
@@ -41,13 +37,28 @@ class FileClient {
         } else {
             System.out.println("Usage: <IP of UDP Server> <File name>");
             System.exit(1);
+        }*/
+
+        try {
+            // BufferedReader initiated to read from console input
+            BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+
+            // user inputs server IP
+            System.out.println("Server IP:");
+            serverIP = InetAddress.getByName(inFromUser.readLine());
+
+            // user inputs server port
+            System.out.println("Server port:");
+            serverPort = Integer.parseInt(inFromUser.readLine());
+
+            System.out.println("File name:");
+            fileString = inFromUser.readLine();
+        } catch (IOException e) {
+            System.err.println("Invalid input");
         }
 
         try {
-            String fileString = args[2];
-
             System.out.println("Client status: Attempting to connect to the server");
-
             Socket socket = new Socket(serverIP, serverPort);
             System.out.println("Client status: " + socket + " -> connected");
 
