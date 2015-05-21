@@ -1,4 +1,4 @@
-package com.rhys.datacommsassignmenttwo;
+package com.rhys.helloserver;
 
 public class Main {
 
