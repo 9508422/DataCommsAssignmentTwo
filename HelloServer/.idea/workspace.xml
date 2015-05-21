@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a04639b6-46d4-40db-94a4-b9a4514444cf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatProgram/src/com/rhys/chatprogram/ChatPeer.java" afterPath="$PROJECT_DIR$/../ChatProgram/src/com/rhys/chatprogram/ChatPeer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatProgram/src/com/rhys/chatprogram/Config.java" afterPath="$PROJECT_DIR$/../ChatProgram/src/com/rhys/chatprogram/Config.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fileserver/src/com/rhys/fileserver/FileClient.java" afterPath="$PROJECT_DIR$/../Fileserver/src/com/rhys/fileserver/FileClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fileserver/src/com/rhys/fileserver/FileServer.java" afterPath="$PROJECT_DIR$/../Fileserver/src/com/rhys/fileserver/FileServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatProgram/src/com/rhys/chatprogram/Peer.java" afterPath="$PROJECT_DIR$/../ChatProgram/src/com/rhys/chatprogram/Peer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rhys/helloserver/UDPClient.java" afterPath="$PROJECT_DIR$/src/com/rhys/helloserver/UDPClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/rhys/helloserver/UDPServer.java" afterPath="$PROJECT_DIR$/src/com/rhys/helloserver/UDPServer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatProgram/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../ChatProgram/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Fileserver/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../Fileserver/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="a04639b6-46d4-40db-94a4-b9a4514444cf" name="Default" comment="" />
     <ignored path="HelloServer.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
