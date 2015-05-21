@@ -1,2 +1,1 @@
-Peter localhost 5002
-Rhys localhost 5003
+Rhys 10.0.0.2 5002
