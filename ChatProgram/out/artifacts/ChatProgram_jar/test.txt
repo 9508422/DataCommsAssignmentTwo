@@ -1,2 +1,2 @@
-Rhys localhost 5002
-Abi localhost 5003
+Rhys 10.0.0.2 5002
+Abi 10.0.0.22 5003
