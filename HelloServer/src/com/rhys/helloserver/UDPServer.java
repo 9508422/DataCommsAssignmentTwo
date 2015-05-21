@@ -3,7 +3,7 @@ package com.rhys.helloserver;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-public class UDPServer {
+class UDPServer {
 
     public static void main(String[] args) throws Exception {
         DatagramSocket serverSocket = new DatagramSocket(Integer.parseInt(args[0]));

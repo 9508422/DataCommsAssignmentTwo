@@ -10,7 +10,7 @@ import java.util.HashMap;
 /**
  * Created by Rhys on 21/05/2015.
  */
-public class Config {
+class Config {
     private Config() {
     }
 

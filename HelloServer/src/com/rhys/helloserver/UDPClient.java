@@ -9,7 +9,7 @@ import java.net.InetAddress;
 /**
  * Created by Rhys on 21/05/2015.
  */
-public class UDPClient {
+class UDPClient {
 
     public static void main(String[] args) throws Exception {
         BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));

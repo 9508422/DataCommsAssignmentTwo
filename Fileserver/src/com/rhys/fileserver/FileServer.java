@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.StringTokenizer;
 
-public class FileServer {
+class FileServer {
 
     public static void main(String[] args) {
         int inputPort = 8888;
@@ -85,7 +85,7 @@ public class FileServer {
         }
     }
 
-    public static boolean isFilenameValid(String fileName) {
+    private static boolean isFilenameValid(String fileName) {
         File file = new File(fileName);
         try {
             file.getCanonicalPath();

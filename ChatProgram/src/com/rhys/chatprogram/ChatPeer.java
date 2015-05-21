@@ -9,11 +9,11 @@ import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class ChatPeer {
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static HashMap<InetAddress, HashMap<Integer, Peer>> validPeers = new HashMap<>();
-    private static DatagramSocket fullDuplexUDPSocket = null;
+class ChatPeer {
+    private static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_BLUE = "\u001B[34m";
+    private static HashMap<InetAddress, HashMap<Integer, Peer>> validPeers = new HashMap<>();
+    private static final DatagramSocket fullDuplexUDPSocket = null;
 
     public static void main(String[] args) {
         int serverPort;
@@ -27,7 +27,7 @@ public class ChatPeer {
                     System.exit(1);
                 }
             } catch (NumberFormatException e) {
-                System.err.println("Argument" + args[0] + " must be an interger.");
+                System.err.println("Argument" + args[0] + " must be an integer.");
                 System.exit(1);
             }
 

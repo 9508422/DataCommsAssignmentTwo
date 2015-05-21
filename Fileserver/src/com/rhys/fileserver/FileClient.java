@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 /**
  * Created by Rhys on 21/05/2015.
  */
-public class FileClient {
+class FileClient {
 
     public static void main(String[] args) {
         InetAddress serverIP = null;
@@ -64,7 +64,7 @@ public class FileClient {
             DataInputStream fromServer = new DataInputStream(socket.getInputStream());
 
             System.out.println("Client status:" + socket + " -> attempting network read");
-            System.out.println("Cliesnt status: " + socket + " -> attempting disk write");
+            System.out.println("Client status: " + socket + " -> attempting disk write");
             byte[] buffer = new byte[1024];
             long totalBytesReceived = 0;
             int read = fromServer.read(buffer, 0, 1024);
@@ -84,7 +84,7 @@ public class FileClient {
         }
     }
 
-    public static boolean isFilenameValid(String fileName) {
+    private static boolean isFilenameValid(String fileName) {
         File file = new File(fileName);
         try {
             file.getCanonicalPath();
