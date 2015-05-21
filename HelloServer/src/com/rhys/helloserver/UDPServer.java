@@ -3,6 +3,9 @@ package com.rhys.helloserver;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
+/**
+ * Created by Rhys on 21/05/2015.
+ */
 class UDPServer {
 
     public static void main(String[] args) throws Exception {
@@ -13,7 +16,7 @@ class UDPServer {
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             serverSocket.receive(receivePacket);
             String sentence = new String(receivePacket.getData());
-            System.out.println("RECEIVED: " + sentence);
+            System.out.println("Received: " + sentence);
             sendData = "Hello, my name is Rhys Gevaux and my ID is 9508422".getBytes();
             serverSocket.send(new DatagramPacket(sendData, sendData.length, receivePacket.getAddress(), receivePacket.getPort()));
         }
