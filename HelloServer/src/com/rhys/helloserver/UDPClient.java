@@ -12,7 +12,7 @@ import java.net.InetAddress;
 class UDPClient {
 
     public static void main(String[] args) throws Exception {
-        if (args.length < 1) {
+        if (args.length < 2) {
             System.out.println("No arguments entered!");
             System.exit(1);
         } else {
