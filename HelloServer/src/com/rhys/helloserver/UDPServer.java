@@ -35,7 +35,11 @@ class UDPServer {
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
                 serverSocket.receive(receivePacket); // receive the packet
-                System.out.println("Received: " + receivePacket.getData()); // output the request to console
+
+                // output the request to console
+                String sentence = new String(receivePacket.getData());
+                System.out.println("Received: " + sentence);
+
                 sendData = "Hello, my name is Rhys Gevaux and my ID is 9508422".getBytes(); // define the response
 
                 // send the UDP response to the client
