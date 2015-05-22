@@ -36,6 +36,8 @@ class UDPServer {
             byte[] receiveData = new byte[1024]; // byte array to store the UDP request packet received from the client
             byte[] sendData; // byte array to store the UDP response packet sent to the client
 
+            System.out.println("Server running");
+
             // endless loop to keep server running
             while (true) {
                 // new packet to receive UDP request from the client
