@@ -9,7 +9,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.*;
 
-public class ChatPeer {
+class ChatPeer {
 
     static class ServerThread extends Thread {
         public ServerThread(){}
@@ -102,27 +102,20 @@ public class ChatPeer {
         }
 
         public static void UserInputPrompt(){
-            System.out.print("Client status -> Send Message" + " ~> ");
+            System.out.print("Client status -> Send Message" + " -> ");
         }
 
 
     }
 
-    public static void setUp(String[] args){
+    private static void setUp(String[] args){
         int serverPort = 0;
 
         if(args.length == 2) {
             try {
                 serverPort = Integer.parseInt(args[0]);
-
-                if (serverPort >= 65536 || serverPort < 0){
-                    System.err.print("Port: " + serverPort + " is out of the valid port ranges 0 - 65535");
-
-                    System.exit(1);
-                }
             } catch (NumberFormatException e){
-                System.err.println("Argument" + args[0] + " must be an interger.");
-
+                System.err.println("Argument" + args[0] + " must be an integer.");
                 System.exit(1);
             }
 
@@ -141,22 +134,21 @@ public class ChatPeer {
 
         System.out.println("------------------------ Imported valid peers -------------------------");
         for ( HashMap<Integer, Peer> portPeerSet: validPeers.values() )
-            for ( Peer peer : portPeerSet.values() )
-                System.out.println(peer);
+            portPeerSet.values().forEach(System.out::println);
         System.out.println("-----------------------------------------------------------------------");
 
         try {
             fullDuplexUDPSocket = new DatagramSocket(serverPort);
         } catch (SocketException e) {
-            System.err.println("Critical error, must terminate. Do you have another server bound to this port? - "
-                    + serverPort);
+            System.err.println("Critical error, must terminate. Another server is operating on port '" + serverPort
+                    + "'");
             System.exit(1);
         }
 
     }
 
 
-    public static HashMap<InetAddress, HashMap<Integer, Peer>> validPeers = new HashMap<>();
+    private static HashMap<InetAddress, HashMap<Integer, Peer>> validPeers = new HashMap<>();
 
     private static DatagramSocket fullDuplexUDPSocket = null;
 
