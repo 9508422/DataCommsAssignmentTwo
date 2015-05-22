@@ -7,7 +7,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
 
 class ChatPeer {
     private static HashMap<InetAddress, HashMap<Integer, Peer>> validPeers = new HashMap<>();
@@ -16,10 +17,10 @@ class ChatPeer {
     public static void main(String[] args) {
         int serverPort = 0;
 
-        if(args.length == 2) {
+        if (args.length == 2) {
             try {
                 serverPort = Integer.parseInt(args[0]);
-            } catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.err.println("Argument" + args[0] + " must be an integer.");
                 System.exit(1);
             }
@@ -37,7 +38,7 @@ class ChatPeer {
         }
 
         System.out.println("------------------------ Imported valid peers -------------------------");
-        for ( HashMap<Integer, Peer> portPeerSet: validPeers.values() )
+        for (HashMap<Integer, Peer> portPeerSet : validPeers.values())
             portPeerSet.values().forEach(System.out::println);
         System.out.println("-----------------------------------------------------------------------");
 
@@ -63,9 +64,10 @@ class ChatPeer {
     }
 
     static class ServerThread extends Thread {
-        public ServerThread(){}
+        public ServerThread() {
+        }
 
-        public void run(){
+        public void run() {
             InetAddress IPAddress = null;
             int port = 0;
             byte[] receiveData = new byte[1024];
@@ -73,32 +75,26 @@ class ChatPeer {
             String receivedMessageString;
             HashSet<InetAddress> unauthorisedPeers = new HashSet<>();
 
-            while(true) {
-                try{
+            while (true) {
+                try {
                     receivePacket = new DatagramPacket(receiveData, receiveData.length);
                     fullDuplexUDPSocket.receive(receivePacket);
                     IPAddress = receivePacket.getAddress();
                     port = receivePacket.getPort();
 
-                    if(validPeers.containsKey(IPAddress) && validPeers.get(IPAddress).containsKey(port)){
+                    if (validPeers.containsKey(IPAddress) && validPeers.get(IPAddress).containsKey(port)) {
                         receivedMessageString = new String(receivePacket.getData());
 
-                        System.out.println("\nServer Status -> " + validPeers.get(IPAddress).get(port) + " -> " + receivedMessageString.trim());
-                    }
+                        System.out.print("Server Status -> " + validPeers.get(IPAddress).get(port) + " -> " + receivedMessageString.trim());
+                    } else if (!unauthorisedPeers.contains(IPAddress)) {
+                        System.out.print("\nServer -> Unauthorized chat request from <" + IPAddress + ">");
 
-                    else  {
-                        if(!unauthorisedPeers.contains(IPAddress)){
-                            System.out.println("Server -> Unauthorized chat request from <" + IPAddress + ">");
-
-                           unauthorisedPeers.add(IPAddress);
-                        }
+                        unauthorisedPeers.add(IPAddress);
                     }
 
                     receiveData = new byte[1024];
                     ClientThread.UserInputPrompt();
-                }
-                catch (IOException e)
-                {
+                } catch (IOException e) {
                     System.out.println("Something has gone wrong with " + IPAddress + ":" + port);
                 }
             }
@@ -106,17 +102,22 @@ class ChatPeer {
     }
 
     static class ClientThread extends Thread {
-        public ClientThread(){}
+        public ClientThread() {
+            UserInputPrompt();
+        }
 
-        public void run(){
+        public static void UserInputPrompt() {
+            System.out.print("\nClient status -> Send Message" + " -> ");
+        }
+
+        public void run() {
             BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
             DatagramPacket sendPacket;
             byte[] sendData;
             String sentence;
 
-            while(true) {
+            while (true) {
                 try {
-                    UserInputPrompt();
                     try {
                         sentence = inFromUser.readLine();
                     } catch (IOException e) {
@@ -134,16 +135,10 @@ class ChatPeer {
                             fullDuplexUDPSocket.send(sendPacket);
                         }
 
-                }
-                catch (IOException e)
-                {
+                } catch (IOException e) {
                     System.out.println("Something has gone wrong sending the packet to the peers, continuing");
                 }
             }
-        }
-
-        public static void UserInputPrompt(){
-            System.out.print("Client status -> Send Message" + " -> ");
         }
 
     }
