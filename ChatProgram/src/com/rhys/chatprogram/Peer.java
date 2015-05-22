@@ -16,7 +16,6 @@ class Peer {
         this.peerName = peerName;
         this.peerIP = peerIP;
         this.peerPort = peerPort;
-
         this.peerId = peerCount++;
     }
 

@@ -37,7 +37,6 @@ class Config {
             }
 
             HashMap<Integer, Peer> IPtoPortMapping = validPeers.get(inet);
-
             IPtoPortMapping.put(port, new Peer(user, inet, port));
         }
 
