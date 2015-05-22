@@ -10,9 +10,6 @@ import java.net.SocketException;
 import java.util.*;
 
 public class ChatPeer {
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_RED = "\u001B[31m";
 
     static class ServerThread extends Thread {
         public ServerThread(){}
@@ -40,7 +37,7 @@ public class ChatPeer {
                     if(validPeers.containsKey(IPAddress) && validPeers.get(IPAddress).containsKey(port)){
                         receivedMessageString = new String(receivePacket.getData());
 
-                        System.out.println("\nServer Status -> " + validPeers.get(IPAddress).get(port) + " -> " + ANSI_BLUE + receivedMessageString.trim() + ANSI_RESET);
+                        System.out.println("\nServer Status -> " + validPeers.get(IPAddress).get(port) + " -> " + receivedMessageString.trim());
                     }
 
                     else  {
@@ -105,7 +102,7 @@ public class ChatPeer {
         }
 
         public static void UserInputPrompt(){
-            System.out.print("Client status -> Send Message" + ANSI_RED + " ~> " + ANSI_RESET);
+            System.out.print("Client status -> Send Message" + " ~> ");
         }
 
 
